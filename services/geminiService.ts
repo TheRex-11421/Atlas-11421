@@ -5,8 +5,21 @@ const response = await fetch("/.netlify/functions/generate", {
   headers: {
     "Content-Type": "application/json",
   },
-  body: JSON.stringify(payload),
+  body: JSON.stringify({
+    contents: [
+      {
+        parts: [
+          {
+            text: prompt
+          }
+        ]
+      }
+    ]
+  }),
 });
+
+const data = await response.json();
+
 
 const data = await response.json();
 
