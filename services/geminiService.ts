@@ -1,5 +1,15 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
+#import { GoogleGenAI, Type } from "@google/genai";
+const response = await fetch("/.netlify/functions/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(payload),
+});
+
+const data = await response.json();
+
 import { UserPreferences, ProjectSuggestion, ProjectRoadmap, SkillLevel } from "../types";
 
 export const suggestProjects = async (prefs: UserPreferences): Promise<ProjectSuggestion[]> => {
