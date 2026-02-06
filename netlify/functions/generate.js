@@ -4,6 +4,12 @@ export async function handler(event) {
 
     const body = event.body ? JSON.parse(event.body) : {};
 
+    console.log("Incoming request body:", body);
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+
+
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
       {
