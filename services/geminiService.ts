@@ -13,7 +13,17 @@ const data = await response.json();
 import { UserPreferences, ProjectSuggestion, ProjectRoadmap, SkillLevel } from "../types";
 
 export const suggestProjects = async (prefs: UserPreferences): Promise<ProjectSuggestion[]> => {
-  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+  #const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+  const response = await fetch("/.netlify/functions/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(payload),
+});
+
+const data = await response.json();
+
   const prompt = `You are a Senior Academic Advisor. Research and suggest 4 high-impact, innovative engineering project ideas for 2024-2025.
     Student Profile: ${prefs.year} year in ${prefs.branch}. 
     Focus Areas: ${prefs.interests}. 
